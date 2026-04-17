@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#04040F"/>
+<title>شاهد 365</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
+<script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════
+   LIQUID GLASS DESIGN SYSTEM — SHAHID365 v3
+═══════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Backgrounds */
+  --bg:#04040F;--bg1:#07071A;--bg2:#0B0B20;--bg3:#0F0F28;
+  /* Liquid Glass tokens */
+  --gl-bg:rgba(255,255,255,.055);
+  --gl-bg-h:rgba(255,255,255,.095);
+  --gl-border:rgba(255,255,255,.12);
+  --gl-border-top:rgba(255,255,255,.28);
+  --gl-blur:blur(28px) saturate(200%) brightness(1.1);
+  --gl-shadow:0 8px 32px rgba(0,0,0,.45),0 1px 0 rgba(255,255,255,.14) inset;
+  /* Accent */
+  --a:#5B9BFF;--a2:#3575FF;--a3:rgba(91,155,255,.15);
+  --r:#FF5F6D;--r2:rgba(255,95,109,.14);
+  --go:#FFD166;--go2:rgba(255,209,102,.13);
+  --gr:#4ADE80;--gr2:rgba(74,222,128,.12);
+  --pu:#A78BFF;--cy:#22D3EE;
+  /* Text */
+  --t1:#F0F2FF;--t2:rgba(240,242,255,.65);--t3:rgba(240,242,255,.35);--t4:rgba(240,242,255,.18);
+  /* Fonts */
+  --f:'Cairo',sans-serif;--fo:'Oswald',sans-serif;
+  /* Layout */
+  --nav-h:66px;
+  /* Transitions */
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--f);background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-thumb{background:rgba(91,155,255,.3);border-radius:3px}
+img{display:block;max-width:100%}
+button{cursor:pointer;border:none;font-family:var(--f);background:none;color:inherit}
+svg{flex-shrink:0;pointer-events:none}
+
+/* ── LIQUID GLASS ─────────────────────────────────────────── */
+.gl{
+  background:var(--gl-bg);
+  backdrop-filter:var(--gl-blur);-webkit-backdrop-filter:var(--gl-blur);
+  border:1px solid var(--gl-border);
+  border-top-color:var(--gl-border-top);
+  box-shadow:var(--gl-shadow);
+  position:relative;overflow:hidden;
+}
+.gl::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 55%);pointer-events:none;border-radius:inherit}
+.gl2{
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(40px) saturate(220%) brightness(1.12);
+  -webkit-backdrop-filter:blur(40px) saturate(220%) brightness(1.12);
+  border:1px solid rgba(255,255,255,.2);
+  border-top-color:rgba(255,255,255,.38);
+  box-shadow:0 12px 48px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.18) inset;
+  position:relative;overflow:hidden;
+}
+.gl2::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%);pointer-events:none;border-radius:inherit}
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:10px 22px;border-radius:12px;font-weight:700;font-size:13.5px;
+  cursor:pointer;border:none;transition:all .25s var(--spring);
+  white-space:nowrap;line-height:1;font-family:var(--f);
+  position:relative;overflow:hidden;
+}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .2s}
+.btn:hover::after{background:rgba(255,255,255,.06)}
+.btn:active{transform:scale(.97)!important}
+.bp{
+  background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;
+  box-shadow:0 4px 20px rgba(91,155,255,.38);
+}
+.bp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(91,155,255,.55)}
+.bs{
+  background:var(--gl-bg);color:var(--t1);
+  border:1px solid var(--gl-border);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.bs:hover{background:var(--gl-bg-h);transform:translateY(-1px)}
+.btn-lg{padding:13px 30px;font-size:15px;border-radius:14px}
+.btn-sm{padding:6px 13px;font-size:12px;border-radius:9px}
+.btn-xs{padding:4px 10px;font-size:11px;border-radius:7px}
+.btn:disabled{opacity:.42;pointer-events:none}
+
+/* ── BADGES ──────────────────────────────────────────────── */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.2px}
+.bb{background:rgba(91,155,255,.16);color:var(--a);border:1px solid rgba(91,155,255,.28)}
+.bgo{background:var(--go2);color:var(--go);border:1px solid rgba(255,209,102,.22)}
+.br{background:var(--r2);color:var(--r);border:1px solid rgba(255,95,109,.28)}
+.bg2{background:var(--gr2);color:var(--gr);border:1px solid rgba(74,222,128,.22)}
+.bpu{background:rgba(167,139,255,.14);color:var(--pu);border:1px solid rgba(167,139,255,.24)}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px;
+  transition:background .3s,backdrop-filter .3s;
+}
+#nav.scrolled{
+  background:rgba(4,4,15,.88);
+  backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;transition:opacity .2s}
+.nav-logo:hover{opacity:.85}
+.nav-logo-ic{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(91,155,255,.45);flex-shrink:0}
+.nav-logo-img{width:36px;height:36px;border-radius:10px;object-fit:contain;flex-shrink:0}
+.nav-logo-t{font-family:var(--fo);font-size:19px;font-weight:700;letter-spacing:-.3px}
+.nav-links{display:flex;align-items:center;gap:1px}
+.nl{
+  padding:7px 13px;border-radius:9px;font-size:13.5px;font-weight:600;
+  color:var(--t2);cursor:pointer;transition:all .18s;white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
+}
+.nl:hover{color:var(--t1);background:rgba(255,255,255,.07)}
+.nl.act{color:var(--a);background:rgba(91,155,255,.1)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-sr-wrap{position:relative}
+.nav-sr{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;padding:7px 36px 7px 15px;color:var(--t1);
+  font-family:var(--f);font-size:13px;outline:none;width:185px;transition:all .25s;
+}
+.nav-sr:focus{background:rgba(255,255,255,.11);border-color:rgba(91,155,255,.5);width:220px;box-shadow:0 0 0 3px rgba(91,155,255,.1)}
+.nav-sr::placeholder{color:var(--t3)}
+[dir="rtl"] .nav-sr{padding:7px 15px 7px 36px}
+[dir="rtl"] .nav-sr-ic{position:absolute;top:50%;transform:translateY(-50%);left:12px;color:var(--t3);pointer-events:none}
+[dir="ltr"] .nav-sr-ic{position:absolute;top:50%;transform:translateY(-50%);right:12px;color:var(--t3);pointer-events:none}
+.lang-b{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);
+  color:var(--t1);border-radius:9px;padding:7px 13px;font-size:12.5px;font-weight:700;
+  cursor:pointer;font-family:var(--f);transition:all .18s;display:flex;align-items:center;gap:5px;
+}
+.lang-b:hover{background:rgba(255,255,255,.14)}
+.ham{display:none;flex-direction:column;gap:4.5px;padding:8px;transition:gap .2s}
+.ham span{display:block;width:21px;height:2px;background:var(--t1);border-radius:2px;transition:all .25s}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{
+  display:none;position:fixed;inset:0;top:var(--nav-h);
+  background:rgba(4,4,15,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  z-index:250;padding:16px;flex-direction:column;gap:3px;animation:fadeUp .22s var(--ease);
+}
+.mob-menu.open{display:flex}
+.mob-menu .nl{padding:13px 16px;border-radius:11px;font-size:15px}
+
+/* ── APP ─────────────────────────────────────────────────── */
+#app{padding-top:var(--nav-h);min-height:100vh}
+.view{animation:fadeUp .4s var(--ease) both}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero{position:relative;height:min(92vh,740px);overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.3) saturate(1.3)}
+.hero-bg-anim{animation:hzoom 9s ease forwards}
+.hero-veil{position:absolute;inset:0}
+.hero-bot{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,var(--bg) 0%,transparent 100%)}
+.hero-cont{position:absolute;inset:0;display:flex;align-items:center;padding:0 52px}
+[dir="rtl"] .hero-cont{justify-content:flex-end}
+.hero-inner{max-width:620px}
+.hero-title{font-family:var(--fo);font-size:clamp(34px,6vw,68px);font-weight:700;line-height:1.04;letter-spacing:-1.5px;text-shadow:0 4px 40px rgba(0,0,0,.7);margin-bottom:13px}
+.hero-desc{font-size:14.5px;color:var(--t2);line-height:1.88;max-width:470px;margin-bottom:20px}
+.hero-genres{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:24px}
+.hero-genre{padding:4px 13px;border-radius:8px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);font-size:11.5px;font-weight:600;cursor:pointer;transition:all .18s}
+.hero-genre:hover{background:rgba(91,155,255,.15);border-color:rgba(91,155,255,.3);color:var(--a)}
+.hero-dots{position:absolute;bottom:96px;display:flex;gap:7px;align-items:center}
+[dir="rtl"] .hero-dots{left:52px}
+[dir="ltr"] .hero-dots{right:52px}
+.hero-dot{height:5px;border-radius:999px;background:rgba(255,255,255,.28);cursor:pointer;transition:all .35s var(--spring)}
+.hero-dot.act{width:26px;background:var(--a)}
+.hero-dot:not(.act){width:5px}
+
+/* ── SECTIONS ────────────────────────────────────────────── */
+.secs{padding:0 22px 64px;max-width:1440px;margin:0 auto}
+.sec{margin-bottom:42px}
+.sec-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sec-title{font-size:19px;font-weight:800;display:flex;align-items:center;gap:9px;color:var(--t1)}
+.sec-bar{width:4px;height:21px;border-radius:999px;flex-shrink:0}
+.sec-more{font-size:12.5px;color:var(--a);cursor:pointer;font-weight:600;display:flex;align-items:center;gap:4px;transition:opacity .18s}
+.sec-more:hover{opacity:.75}
+
+/* ── CONTENT ROW ─────────────────────────────────────────── */
+.row{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;-ms-overflow-style:none;scrollbar-width:none;padding-right:22px;margin-right:-22px}
+[dir="ltr"] .row{padding-left:22px;margin-left:-22px;padding-right:0;margin-right:0}
+.row::-webkit-scrollbar{display:none}
+
+/* ── CARD ────────────────────────────────────────────────── */
+.card{min-width:150px;width:150px;flex-shrink:0;border-radius:14px;overflow:hidden;cursor:pointer;position:relative;transition:transform .32s var(--spring),box-shadow .32s;will-change:transform}
+.card:hover{transform:translateY(-9px) scale(1.025);box-shadow:0 24px 52px rgba(0,0,0,.75),0 0 0 1px rgba(91,155,255,.2)}
+.card-img{width:100%;height:225px;object-fit:cover;display:block;background:var(--bg3);transition:filter .3s}
+.card:hover .card-img{filter:brightness(1.05)}
+.card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,4,15,.97) 0%,rgba(4,4,15,.3) 55%,transparent 100%)}
+.card-shine{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%);opacity:0;transition:opacity .25s}
+.card:hover .card-shine{opacity:1}
+.card-bdg{position:absolute;top:8px}
+[dir="rtl"] .card-bdg{left:8px}
+[dir="ltr"] .card-bdg{right:8px}
+.card-info{position:absolute;bottom:0;left:0;right:0;padding:11px}
+.card-title{font-weight:700;font-size:12.5px;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--t1)}
+.card-meta{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2)}
+.card-play{
+  margin-top:8px;width:100%;padding:6px;font-size:11.5px;
+  opacity:0;transform:translateY(5px);transition:all .2s var(--ease);
+  justify-content:center;border-radius:8px;
+  background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;
+  display:flex;align-items:center;gap:5px;
+}
+.card:hover .card-play{opacity:1;transform:translateY(0)}
+
+/* ── TRENDING CARD ───────────────────────────────────────── */
+.tcard{min-width:165px;width:165px;flex-shrink:0;border-radius:14px;overflow:hidden;cursor:pointer;position:relative;transition:transform .32s var(--spring),box-shadow .32s}
+.tcard:hover{transform:translateY(-9px) scale(1.025);box-shadow:0 24px 52px rgba(0,0,0,.75),0 0 0 1px rgba(255,209,102,.25)}
+.trend-num{position:absolute;top:-8px;font-family:var(--fo);font-size:88px;font-weight:700;line-height:1;color:var(--go);opacity:.14;z-index:2;pointer-events:none;letter-spacing:-4px}
+[dir="rtl"] .trend-num{right:-6px}
+[dir="ltr"] .trend-num{left:-6px}
+
+/* ── GRID ────────────────────────────────────────────────── */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+
+/* ── LIVE BANNER ─────────────────────────────────────────── */
+.live-ban{
+  border-radius:22px;padding:22px 28px;margin-bottom:42px;
+  background:linear-gradient(135deg,rgba(91,155,255,.08),rgba(255,95,109,.05));
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--r);animation:pd 1.8s infinite;flex-shrink:0}
+
+/* ── BROWSE ──────────────────────────────────────────────── */
+.browse-h{padding:30px 22px 0;max-width:1440px;margin:0 auto}
+.filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.fb{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  color:var(--t2);border-radius:22px;padding:7px 16px;font-size:12.5px;
+  font-weight:600;cursor:pointer;transition:all .18s;font-family:var(--f);
+  display:flex;align-items:center;gap:5px;
+}
+.fb:hover{background:rgba(255,255,255,.12);color:var(--t1)}
+.fb.act{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border-color:transparent}
+.fsel{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  color:var(--t2);border-radius:22px;padding:7px 16px;font-size:12.5px;
+  font-family:var(--f);outline:none;cursor:pointer;-webkit-appearance:none;
+}
+.fsel option{background:#07071A;color:#fff}
+
+/* ── DETAIL ──────────────────────────────────────────────── */
+.det-back{position:relative;height:min(72vh,600px);overflow:hidden}
+.det-bg{position:absolute;inset:0;background-size:cover;background-position:center top;filter:brightness(.28) saturate(1.3);animation:hzoom 9s ease forwards}
+.det-side{position:absolute;inset:0}
+.det-bot{position:absolute;bottom:0;left:0;right:0;height:300px;background:linear-gradient(to top,var(--bg) 0%,transparent 100%)}
+.det-cont{position:absolute;inset:0;display:flex;align-items:flex-end;padding:34px 38px}
+.det-in{display:flex;gap:26px;align-items:flex-end;max-width:920px;width:100%}
+.det-poster{width:140px;height:210px;border-radius:15px;object-fit:cover;flex-shrink:0;box-shadow:0 16px 56px rgba(0,0,0,.65);border:2px solid rgba(255,255,255,.12);background:var(--bg3)}
+.det-title{font-family:var(--fo);font-size:clamp(26px,4vw,52px);font-weight:700;letter-spacing:-1px;line-height:1.04;margin-bottom:9px}
+.det-body{padding:0 38px 52px;max-width:1440px;margin:0 auto}
+
+/* ── CAST ────────────────────────────────────────────────── */
+.cast-row{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;-ms-overflow-style:none;scrollbar-width:none}
+.cast-row::-webkit-scrollbar{display:none}
+.cast-c{min-width:86px;width:86px;flex-shrink:0;text-align:center;cursor:pointer;transition:transform .22s var(--spring)}
+.cast-c:hover{transform:translateY(-5px)}
+.cast-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;margin:0 auto 7px;border:2px solid rgba(255,255,255,.14);background:var(--bg3);transition:border-color .2s}
+.cast-c:hover .cast-photo{border-color:var(--a)}
+.cast-name{font-size:11px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--t2)}
+.cast-role{font-size:10px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+
+/* ── SEASONS ─────────────────────────────────────────────── */
+.s-block{border-radius:14px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(255,255,255,.07)}
+.s-head{padding:13px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.04);transition:background .18s}
+.s-head:hover{background:rgba(255,255,255,.08)}
+.s-arr{transition:transform .25s var(--ease)}
+.s-body{display:none}
+.s-body.open{display:block}
+.ep-row{display:flex;align-items:center;gap:12px;padding:11px 18px;border-top:1px solid rgba(255,255,255,.04);transition:background .15s;cursor:pointer}
+.ep-row:hover{background:rgba(255,255,255,.04)}
+.ep-num{width:34px;height:34px;border-radius:8px;background:rgba(91,155,255,.1);border:1px solid rgba(91,155,255,.18);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:var(--a);flex-shrink:0}
+
+/* ── PERSON PAGE ─────────────────────────────────────────── */
+.person-h{padding:38px 38px 0;max-width:1440px;margin:0 auto;display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap}
+.person-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.14);box-shadow:0 8px 32px rgba(0,0,0,.55);flex-shrink:0;background:var(--bg3)}
+
+/* ── CATEGORY PAGE ───────────────────────────────────────── */
+.cat-hero{border-radius:20px;padding:32px;margin:0 22px 32px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden}
+.cat-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none}
+.cat-related{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.cat-chip{padding:7px 16px;border-radius:22px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:var(--t2)}
+.cat-chip:hover{transform:scale(1.04);border-color:var(--a);color:var(--a);background:rgba(91,155,255,.08)}
+
+/* ── MY LIST ────────────────────────────────────────────── */
+.list-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;gap:18px;text-align:center}
+
+/* ── LIVE TV ─────────────────────────────────────────────── */
+.live-h{padding:30px 22px 0;max-width:1440px;margin:0 auto}
+.live-player-wrap{border-radius:18px;overflow:hidden;margin-bottom:26px;background:#000;position:relative;aspect-ratio:16/9;max-height:500px}
+.live-player-wrap video,.live-player-wrap iframe{width:100%;height:100%;border:none;position:absolute;inset:0}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;max-width:1440px;padding:0 22px;margin:0 auto}
+.ch-card{border-radius:14px;padding:18px 12px;text-align:center;cursor:pointer;transition:all .28s var(--spring);border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;align-items:center;gap:7px}
+.ch-card:hover,.ch-card.act{transform:scale(1.05);border-color:rgba(91,155,255,.4);background:rgba(91,155,255,.07)}
+.ch-card.act{border-color:rgba(91,155,255,.5);background:rgba(91,155,255,.12)}
+
+/* ── VERTICAL REEL FEED ──────────────────────────────────── */
+.reels-wrap{position:relative;height:480px;overflow:hidden;border-radius:20px;margin:0 0 42px}
+.reels-inner{display:flex;gap:12px;overflow-x:auto;height:100%;padding:0 4px;-ms-overflow-style:none;scrollbar-width:none;align-items:stretch}
+.reels-inner::-webkit-scrollbar{display:none}
+.reel-card{min-width:270px;width:270px;flex-shrink:0;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;background:#000}
+.reel-card video{width:100%;height:100%;object-fit:cover;display:block}
+.reel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 50%,transparent 100%)}
+.reel-info{position:absolute;bottom:0;left:0;right:0;padding:16px}
+.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;background:rgba(0,0,0,.3)}
+.reel-card:hover .reel-play{opacity:1}
+
+/* ── VIDEO PLAYER ────────────────────────────────────────── */
+.vp-modal{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:800;display:none;flex-direction:column;align-items:center;justify-content:center;padding:10px}
+.vp-modal.open{display:flex}
+.vp-outer{width:100%;max-width:1200px;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8)}
+.vp-close{position:fixed;top:16px;right:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:50%;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:801;transition:background .18s;backdrop-filter:blur(12px)}
+.vp-close:hover{background:rgba(255,255,255,.22)}
+/* Video.js custom skin */
+.vp-outer .video-js{width:100%;aspect-ratio:16/9;max-height:84vh;border-radius:16px}
+.vp-outer .vjs-big-play-button{
+  border-radius:50%!important;width:64px!important;height:64px!important;
+  background:rgba(91,155,255,.25)!important;backdrop-filter:blur(12px)!important;
+  border:2px solid rgba(91,155,255,.6)!important;
+  top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;
+  font-size:28px!important;line-height:64px!important;
+}
+.vp-outer .vjs-big-play-button:hover{background:rgba(91,155,255,.45)!important}
+.vp-outer .vjs-control-bar{
+  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%)!important;
+  backdrop-filter:blur(8px)!important;height:52px!important;border-radius:0 0 16px 16px!important;
+}
+.vp-outer .vjs-play-progress{background:var(--a)!important}
+.vp-outer .vjs-load-progress{background:rgba(255,255,255,.2)!important}
+.vp-outer .vjs-slider{background:rgba(255,255,255,.25)!important}
+
+/* ── DOWNLOAD MODAL ──────────────────────────────────────── */
+.dl-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);z-index:600;display:none;align-items:center;justify-content:center;padding:20px}
+.dl-modal.open{display:flex}
+.dl-box{border-radius:22px;padding:28px;width:100%;max-width:390px;animation:slideUp .25s var(--ease)}
+
+/* ── SUB GATE ────────────────────────────────────────────── */
+.sub-gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
+
+/* ── INPUT ───────────────────────────────────────────────── */
+.inp{
+  width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:11px;padding:11px 15px;color:var(--t1);font-family:var(--f);
+  font-size:13.5px;outline:none;transition:all .2s;
+}
+.inp:focus{border-color:rgba(91,155,255,.52);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(91,155,255,.1)}
+.inp::placeholder{color:var(--t3)}
+
+/* ── SPLASH ──────────────────────────────────────────────── */
+#splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center}
+#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#splash-over{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+#splash-skip{
+  position:absolute;bottom:36px;right:22px;z-index:2;
+  background:rgba(255,255,255,.16);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:22px;
+  padding:9px 20px;font-size:13.5px;font-weight:700;cursor:pointer;
+  font-family:var(--f);display:none;align-items:center;gap:7px;transition:background .18s;
+}
+#splash-skip:hover{background:rgba(255,255,255,.28)}
+#splash-prog{position:absolute;bottom:0;left:0;height:4px;background:var(--a);border-radius:2px;z-index:2}
+#splash-brand{z-index:2;text-align:center;animation:fadeUp .8s var(--ease) both}
+#splash-brand img{width:100px;height:100px;object-fit:contain;margin:0 auto 14px;filter:drop-shadow(0 0 28px rgba(91,155,255,.7))}
+#splash-brand .st{font-family:var(--fo);font-size:36px;font-weight:700;color:#fff;letter-spacing:-1px}
+@keyframes splashOut{to{opacity:0;transform:scale(1.04)}}
+
+/* ── TOASTS ──────────────────────────────────────────────── */
+#toasts{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);z-index:900;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:none}
+.toast{
+  background:rgba(16,16,32,.96);border:1px solid rgba(255,255,255,.12);color:var(--t1);
+  padding:10px 20px;border-radius:22px;font-size:13px;backdrop-filter:blur(20px);
+  max-width:340px;text-align:center;animation:slideUp .28s var(--ease) both;
+  display:flex;align-items:center;gap:8px;pointer-events:all;
+}
+.toast.s{border-color:rgba(74,222,128,.35);background:rgba(5,28,14,.96)}
+.toast.e{border-color:rgba(255,95,109,.35);background:rgba(28,5,10,.96)}
+
+/* ── ADBLOCK ─────────────────────────────────────────────── */
+.adblock-warn{position:fixed;inset:0;background:rgba(4,4,15,.97);z-index:950;display:flex;align-items:center;justify-content:center;padding:22px}
+
+/* ── FLOAT AD ────────────────────────────────────────────── */
+.float-ad{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:500;max-width:880px;width:calc(100% - 28px);border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.6);animation:adIn .4s both}
+.fad-close{position:absolute;top:7px;right:7px;width:24px;height:24px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1}
+.fad-prog{position:absolute;bottom:0;left:0;height:3px;background:var(--a);border-radius:2px;z-index:1}
+.fad-img{width:100%;max-height:90px;object-fit:cover;cursor:pointer;display:block}
+
+/* ── LOADING / EMPTY ─────────────────────────────────────── */
+.loading{display:flex;align-items:center;justify-content:center;padding:80px;color:var(--t3);font-size:14.5px;gap:10px}
+.spin{width:22px;height:22px;border:2px solid rgba(91,155,255,.2);border-top-color:var(--a);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+.empty{text-align:center;padding:80px 20px;color:var(--t3)}
+.err-card{border-radius:18px;padding:32px;text-align:center;max-width:480px;margin:40px auto}
+.orb{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0}
+
+/* ── ANIMS ───────────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes hzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
+@keyframes adIn{from{opacity:0;transform:translateX(-50%) translateY(18px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.au{animation:fadeUp .45s var(--ease) both}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .ham{display:flex}
+  .nav-sr{width:150px}.nav-sr:focus{width:170px}
+  .hero-cont{padding:0 22px}
+  .hero-title{font-size:28px}
+  .hero-desc{display:none}
+  .secs{padding:0 14px 48px}
+  .det-cont{padding:22px 18px}
+  .det-in{flex-direction:column;gap:14px;align-items:flex-start}
+  .det-poster{width:96px;height:144px}
+  .det-body{padding:0 18px 40px}
+  .person-h{padding:22px 18px 0}
+  .live-h{padding:22px 14px 0}
+  .ch-grid{padding:0 14px;grid-template-columns:repeat(auto-fill,minmax(128px,1fr))}
+  .cat-hero{margin:0 14px 26px;padding:22px}
+  .browse-h{padding:24px 14px 0}
+}
+@media(max-width:600px){
+  :root{--nav-h:58px}
+  .hero{height:min(84vh,540px)}
+  .hero-cont{padding:0 16px}
+  .hero-title{font-size:24px}
+  .hero-dots{bottom:76px}
+  .btn-lg{padding:11px 22px;font-size:14px}
+  .card{min-width:135px;width:135px}
+  .card-img{height:200px}
+  .tcard{min-width:155px;width:155px}
+  .cgrid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:12px}
+  .det-poster{width:76px;height:114px}
+  .sec{margin-bottom:30px}
+  .live-ban{padding:16px 18px}
+  .reels-wrap{height:380px}
+  .reel-card{min-width:220px;width:220px}
+}
+</style>
+</head>
+<body>
+<div class="orb" style="width:680px;height:680px;background:#1B3C9A;top:-220px;right:-180px;opacity:.18"></div>
+<div class="orb" style="width:580px;height:580px;background:#8B1F35;bottom:-180px;left:-140px;opacity:.15"></div>
+
+<!-- SPLASH -->
+<div id="splash" style="display:none">
+  <video id="splash-vid" playsinline muted preload="auto"></video>
+  <div id="splash-over">
+    <div id="splash-brand">
+      <img id="splash-logo-img" src="" alt="" style="display:none"/>
+      <div class="st" id="splash-name-el">شاهد<span style="color:var(--a)">365</span></div>
+    </div>
+  </div>
+  <div id="splash-prog" style="width:0%"></div>
+  <button id="splash-skip" onclick="closeSplash()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="4" y2="20"/></svg>
+    تخطي
+  </button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo" onclick="go('home')">
+    <div class="nav-logo-ic" id="nav-logo-ic">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </div>
+    <img class="nav-logo-img" id="nav-logo-img" src="" alt="" style="display:none"/>
+    <div class="nav-logo-t" id="site-title-el">شاهد<span style="color:var(--a)">365</span></div>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <div class="nl act" data-pg="home"      onclick="go('home')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      الرئيسية
+    </div>
+    <div class="nl" data-pg="movies"    onclick="go('movies')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="7" y2="7"/><line x1="2" x2="22" y1="17" y2="17"/></svg>
+      أفلام
+    </div>
+    <div class="nl" data-pg="series"    onclick="go('series')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+      مسلسلات
+    </div>
+    <div class="nl" data-pg="live"      onclick="go('live')">
+      <span class="live-dot" style="width:6px;height:6px"></span>
+      بث مباشر
+    </div>
+    <div class="nl" data-pg="mylist"    onclick="go('mylist')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      قائمتي
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-sr-wrap">
+      <span class="nav-sr-ic">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input class="nav-sr" id="nav-q" placeholder="ابحث..." autocomplete="off"/>
+    </div>
+    <button class="lang-b" id="lang-btn" onclick="toggleLang()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      EN
+    </button>
+    <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mob-menu">
+  <div class="nl" onclick="go('home');closeMob()">الرئيسية</div>
+  <div class="nl" onclick="go('movies');closeMob()">أفلام</div>
+  <div class="nl" onclick="go('series');closeMob()">مسلسلات</div>
+  <div class="nl" onclick="go('live');closeMob()">بث مباشر</div>
+  <div class="nl" onclick="go('mylist');closeMob()">قائمتي</div>
+  <div class="nl" onclick="go('downloads');closeMob()">تنزيلاتي</div>
+</div>
+
+<!-- APP -->
+<div id="app"></div>
+
+<!-- VIDEO PLAYER -->
+<div class="vp-modal" id="vp-modal">
+  <button class="vp-close" onclick="closeVP()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+  <div class="vp-outer" id="vp-outer"></div>
+</div>
+
+<!-- DL MODAL -->
+<div class="dl-modal" id="dl-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="dl-box gl2">
+    <div style="font-family:var(--fo);font-size:19px;font-weight:700;margin-bottom:16px" id="dl-title">اختر جودة التحميل</div>
+    <div id="dl-list" style="display:flex;flex-direction:column;gap:9px;margin-bottom:18px"></div>
+    <button class="btn bs" style="width:100%;justify-content:center" onclick="$('dl-modal').classList.remove('open')">إلغاء</button>
+  </div>
+</div>
+
+<!-- ADBLOCK -->
+<div class="adblock-warn" id="adblock-warn" style="display:none">
+  <div class="gl2" style="border-radius:24px;padding:44px;text-align:center;max-width:500px;animation:slideUp .4s var(--ease) both">
+    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--r)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 20px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <h2 style="font-family:var(--fo);font-size:26px;font-weight:700;margin-bottom:12px">تم اكتشاف حاظب الإعلانات</h2>
+    <p style="color:var(--t2);font-size:14px;line-height:1.82;margin-bottom:26px">نعتمد على الإعلانات لتقديم هذه الخدمة. يرجى تعطيل حاظب الإعلانات وإعادة تحميل الصفحة.</p>
+    <button class="btn bp btn-lg" onclick="checkAdblock()">عطّلته، تابع</button>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<script>
+// ══════════════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════════════
+const SB_URL  = 'https://ktkltrrvprtnvtyhmvfc.supabase.co';
+const SB_KEY  = 'sb_publishable_z-rSPdUR3d-8CnghKf9y1g_5gq1KVnU';
+const TMDB_K  = '6235c6c495feb99e4f3d9f5681a02db5';
+const TMDB_T  = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjM1YzZjNDk1ZmViOTllNGYzZDlmNTY4MWEwMmRiNSIsIm5iZiI6MTc3NjM1MzIwNC43MDQsInN1YiI6IjY5ZTBmZmI0OWU3ODNlMjVhYTJkOWU5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mydo5EJD10telwl1dfsv8-_ja1j5ocLkrgvCaVaNCdI';
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+// ── State ─────────────────────────────────────────────
+const ST = {
+  page:'home', params:{},
+  lang: localStorage.getItem('s365_lang')||'ar',
+  settings:null, fp:null, banned:false,
+  pgCount:0, activeAds:[],
+  adSeen: JSON.parse(sessionStorage.getItem('s365_ad')||'{}'),
+  myList: JSON.parse(localStorage.getItem('s365_list')||'[]'),
+  downloads: JSON.parse(localStorage.getItem('s365_dl')||'[]'),
+  dlCfg: JSON.parse(localStorage.getItem('s365_dlcfg')||'{"quality":"high"}'),
+  _heroIdx:0, _heroTimer:null,
+  _liveChs:[], _liveCat:'all', _liveCh:null,
+  _vpInst:null, _adTimer:null,
+};
+
+// ── i18n ─────────────────────────────────────────────
+const I = {
+  ar:{ watch:'شاهد الآن', dl:'تحميل', trailer:'الإعلان', addList:'قائمتي',
+    rmList:'إزالة', movie:'فيلم', series:'مسلسل', trending:'الأكثر رواجاً',
+    latest:'أحدث الإضافات', todayEps:'حلقات اليوم', live:'قنوات مباشرة',
+    liveWatch:'مشاهدة البث', all:'الكل', cast:'طاقم التمثيل', director:'المخرج',
+    season:'الموسم', ep:'الحلقة', comingSoon:'قريباً', search:'ابحث...',
+    noRes:'لا توجد نتائج', subReq:'اشتراك مطلوب',
+    subDesc:'أدخل كود الاشتراك للوصول للمحتوى.', subCode:'كود الاشتراك',
+    activate:'تفعيل', verifying:'جارٍ التحقق...', subOk:'تم تفعيل الاشتراك',
+    maintenance:'تحت الصيانة', available:'متاح', offline:'متوقف',
+    loading:'تحميل...', back:'رجوع', works:'الأعمال', viewAll:'عرض الكل',
+    topRated:'الأعلى تقييماً', year:'السنة', genre:'التصنيف', lang:'اللغة',
+    ipBanned:'عنوانك محظور — تواصل مع الدعم', myList:'قائمتي',
+    noList:'قائمتك فارغة', addToList:'أضف إلى قائمتي',
+    myDl:'تنزيلاتي', noDl:'لا توجد تنزيلات',
+    relatedCats:'فئات مشابهة', reels:'مقاطع تشويقية',
+    low:'منخفضة', medium:'متوسطة', high:'عالية', max:'أعلى جودة',
+    category:'فئة', categories:'الفئات',
+  },
+  en:{ watch:'Watch Now', dl:'Download', trailer:'Trailer', addList:'My List',
+    rmList:'Remove', movie:'Movie', series:'Series', trending:'Trending Now',
+    latest:'Latest', todayEps:"Today's Episodes", live:'Live Channels',
+    liveWatch:'Watch Live', all:'All', cast:'Cast', director:'Director',
+    season:'Season', ep:'Episode', comingSoon:'Coming Soon', search:'Search...',
+    noRes:'No results found', subReq:'Subscription Required',
+    subDesc:'Enter your code to access content.', subCode:'Subscription Code',
+    activate:'Activate', verifying:'Verifying...', subOk:'Subscription activated',
+    maintenance:'Under Maintenance', available:'Available', offline:'Offline',
+    loading:'Loading...', back:'Back', works:'Works', viewAll:'View All',
+    topRated:'Top Rated', year:'Year', genre:'Genre', lang:'Language',
+    ipBanned:'Your IP is banned — contact support', myList:'My List',
+    noList:'Your list is empty', addToList:'Add to My List',
+    myDl:'Downloads', noDl:'No downloads',
+    relatedCats:'Related Categories', reels:'Trailers',
+    low:'Low', medium:'Medium', high:'High', max:'Max Quality',
+    category:'Category', categories:'Categories',
+  }
+};
+const t = k => (I[ST.lang]||I.ar)[k]||k;
+const $ = id => document.getElementById(id);
+const esc = s => s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : '';
+const fmt = n => n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(0)+'K':String(n||0);
+const s2t = s => { const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=Math.floor(s%60); return h>0?`${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`:`${m}:${String(sec).padStart(2,'0')}`; };
+
+// ── Toast ─────────────────────────────────────────────
+function toast(msg, type='') {
+  const c=$('toasts'), d=document.createElement('div');
+  d.className='toast '+(type==='success'?'s':type==='error'?'e':'');
+  d.textContent=msg; c.appendChild(d);
+  setTimeout(()=>{ d.style.opacity='0'; d.style.transition='opacity .3s'; setTimeout(()=>d.remove(),300); },3400);
+}
+
+// ── Haptic ────────────────────────────────────────────
+function haptic(t='light') { try { navigator.vibrate && navigator.vibrate(t==='light'?10:t==='medium'?25:50); } catch{} }
+
+// ── Lang ──────────────────────────────────────────────
+function toggleLang() { ST.lang=ST.lang==='ar'?'en':'ar'; localStorage.setItem('s365_lang',ST.lang); applyLang(); App.render(); }
+function applyLang() {
+  document.documentElement.lang=ST.lang;
+  document.documentElement.dir=ST.lang==='ar'?'rtl':'ltr';
+  const lb=$('lang-btn'); if(lb) lb.childNodes[lb.childNodes.length-1].textContent=ST.lang==='ar'?' EN':' عربي';
+  const nq=$('nav-q'); if(nq) nq.placeholder=t('search');
+}
+
+function toggleMob() { const m=$('mob-menu'),h=$('ham'); const o=m.classList.toggle('open'); h.classList.toggle('open',o); }
+function closeMob()  { $('mob-menu')?.classList.remove('open'); $('ham')?.classList.remove('open'); }
+
+// ── My List ───────────────────────────────────────────
+function inList(id) { return ST.myList.includes(id); }
+function toggleList(id, e) {
+  e?.stopPropagation(); haptic('light');
+  const i=ST.myList.indexOf(id);
+  if(i>-1) ST.myList.splice(i,1); else ST.myList.push(id);
+  localStorage.setItem('s365_list', JSON.stringify(ST.myList));
+  toast(ST.myList.includes(id) ? t('addToList')+' ✓' : t('rmList'));
+  // Update heart icons in DOM
+  document.querySelectorAll(`[data-lid="${id}"]`).forEach(el => {
+    if(ST.myList.includes(id)) el.setAttribute('fill','currentColor');
+    else el.setAttribute('fill','none');
+  });
+}
+
+// ── Downloads ─────────────────────────────────────────
+function openDlModal(id, title) {
+  $('dl-title').textContent=t('dl')+' — '+esc(title);
+  $('dl-list').innerHTML=['منخفضة','متوسطة','عالية','أعلى جودة'].map((q,i)=>`
+    <button class="btn bs" style="width:100%;justify-content:flex-start;gap:10px" onclick="saveDl('${id}','${esc(title)}','${q}')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      ${q}
+    </button>`).join('');
+  $('dl-modal').classList.add('open');
+}
+function saveDl(id, title, quality) {
+  haptic('medium');
+  if(ST.downloads.find(d=>d.id===id)){ toast('مُنزَّل مسبقاً','error'); return; }
+  ST.downloads.push({id,title,quality,date:new Date().toISOString()});
+  localStorage.setItem('s365_dl',JSON.stringify(ST.downloads));
+  $('dl-modal').classList.remove('open');
+  toast(t('dl')+' ✓','success');
+}
+
+// ══════════════════════════════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════════════════════════════
+function go(page, params={}) {
+  ST.page=page; ST.params=params; ST.pgCount++;
+  window.scrollTo({top:0,behavior:'instant'});
+  document.querySelectorAll('.nl[data-pg]').forEach(e=>e.classList.toggle('act',e.dataset.pg===page));
+  App.render();
+  scheduleAd();
+}
+function isSub() { return !!localStorage.getItem('s365_sub'); }
+
+// ══════════════════════════════════════════════════════
+//  APP
+// ══════════════════════════════════════════════════════
+const App = {
+  async init() {
+    applyLang();
+    // Fingerprint
+    try { const fp=await FingerprintJS.load(); ST.fp=(await fp.get()).visitorId; }
+    catch { ST.fp='fp-'+Date.now().toString(36); }
+    // Settings
+    ST.settings = await DB.getSettings();
+    // Splash
+    initSplash();
+    // IP ban
+    try {
+      const r=await fetch('https://api.ipify.org?format=json',{signal:AbortSignal.timeout(4000)});
+      if(r.ok){const{ip}=await r.json();const{data}=await sb.from('banned_ips').select('ip_address').eq('ip_address',ip).maybeSingle();if(data)ST.banned=true;}
+    } catch {}
+    // Nav scroll
+    window.addEventListener('scroll',()=>$('nav')?.classList.toggle('scrolled',window.scrollY>40));
+    // Search
+    let st;
+    $('nav-q')?.addEventListener('input',e=>{
+      clearTimeout(st); const q=e.target.value.trim();
+      if(!q){if(ST.page==='search')go('home');return;}
+      st=setTimeout(()=>go('search',{q}),340);
+    });
+    // Ads
+    if(ST.settings?.ads_enabled!==false){
+      try{ST.activeAds=await DB.getAds();}catch{}
+      detectAdblock();
+    }
+    updateNavBranding();
+    this.render();
+  },
+  render() {
+    if(ST.banned){renderBanned();return;}
+    if(ST.settings?.maintenance_on){renderMaintenance();return;}
+    if(ST.settings?.sub_required&&!isSub()&&!['home','sub'].includes(ST.page)){renderSubGate();return;}
+    const map={
+      home:()=>renderHome(), movies:()=>renderBrowse({type:'movie',...ST.params}),
+      series:()=>renderBrowse({type:'series',...ST.params}), browse:()=>renderBrowse(ST.params),
+      live:()=>renderLive(), detail:()=>renderDetail(ST.params.id),
+      person:()=>renderPerson(ST.params.id), search:()=>renderSearch(ST.params.q),
+      category:()=>renderCategory(ST.params.slug,ST.params.name),
+      mylist:()=>renderMyList(), sub:()=>renderSubGate(),
+      downloads:()=>renderDownloads(),
+    };
+    (map[ST.page]||map.home)();
+  }
+};
+
+// ══════════════════════════════════════════════════════
+//  BRANDING
+// ══════════════════════════════════════════════════════
+function updateNavBranding() {
+  const s=ST.settings;
+  const tt=ST.lang==='ar'?(s?.site_title_ar||'شاهد 365'):(s?.site_title||'Shahid365');
+  const el=$('site-title-el');
+  if(el) el.innerHTML=esc(tt).replace('365','<span style="color:var(--a)">365</span>');
+  document.title=tt;
+  const logoUrl=s?.logo_url||'';
+  const logoIc=$('nav-logo-ic'), logoImg=$('nav-logo-img');
+  if(logoUrl&&logoImg&&logoIc){logoImg.src=logoUrl;logoImg.style.display='block';logoIc.style.display='none';}
+  else if(logoImg&&logoIc){logoImg.style.display='none';logoIc.style.display='flex';}
+}
+
+// ══════════════════════════════════════════════════════
+//  SPLASH
+// ══════════════════════════════════════════════════════
+function initSplash() {
+  const s=ST.settings;
+  if(sessionStorage.getItem('s365_splashed')) return;
+  if(!s?.splash_enabled||!s?.splash_video_url) return;
+  const splashEl=$('splash'), vidEl=$('splash-vid'), skipBtn=$('splash-skip');
+  const progEl=$('splash-prog'), dur=Math.max(2,+(s.splash_duration||5));
+  if(s.logo_url){const li=$('splash-logo-img');if(li){li.src=s.logo_url;li.style.display='block';}}
+  const nameEl=$('splash-name-el');
+  if(nameEl){const tt=ST.lang==='ar'?(s.site_title_ar||'شاهد 365'):(s.site_title||'Shahid365');nameEl.innerHTML=esc(tt).replace('365','<span style="color:var(--a)">365</span>');}
+  splashEl.style.display='flex'; document.body.style.overflow='hidden';
+  vidEl.src=s.splash_video_url; vidEl.muted=true; vidEl.play().catch(()=>{});
+  progEl.style.width='0%';
+  setTimeout(()=>{progEl.style.transition=`width ${dur}s linear`;progEl.style.width='100%';},60);
+  const skipDelay=Math.min(2200,(dur-1)*1000);
+  setTimeout(()=>{skipBtn.style.display='flex';},Math.max(0,skipDelay));
+  const autoT=setTimeout(()=>closeSplash(),dur*1000+300);
+  vidEl.addEventListener('ended',()=>{clearTimeout(autoT);closeSplash();});
+  ST._splashTimer=autoT;
+  sessionStorage.setItem('s365_splashed','1');
+}
+function closeSplash() {
+  clearTimeout(ST._splashTimer);
+  const el=$('splash'); if(!el) return;
+  el.style.animation='splashOut .5s forwards'; el.style.pointerEvents='none';
+  const v=$('splash-vid');if(v){v.pause();v.src='';}
+  setTimeout(()=>{el.style.display='none';document.body.style.overflow='';},500);
+}
+
+// ══════════════════════════════════════════════════════
+//  DATABASE — all calls wrapped in try/catch
+// ══════════════════════════════════════════════════════
+const DB = {
+  async getSettings() {
+    try{const{data}=await sb.from('settings').select('*').eq('id',1).single();return data||dfltSettings();}
+    catch{return dfltSettings();}
+  },
+  async getFeatured() {
+    try{const{data}=await sb.from('movies').select('*').eq('featured',true).eq('active',true).order('created_at',{ascending:false}).limit(6);return data||[];}catch{return[];}
+  },
+  async getTrending() {
+    try{
+      const ids=ST.settings?.trending_ids||[];
+      if(ids.length){const{data}=await sb.from('movies').select('*').in('id',ids).eq('active',true);if(data?.length)return ids.map(id=>data.find(m=>m.id===id)).filter(Boolean);}
+      const{data}=await sb.from('movies').select('*').eq('active',true).order('views',{ascending:false}).limit(16);return data||[];
+    }catch{return[];}
+  },
+  async getMovies(f={}) {
+    try{
+      let q=sb.from('movies').select('*').eq('active',true);
+      if(f.type)   q=q.eq('type',f.type);
+      if(f.q)      q=q.or(`title.ilike.%${f.q}%,title_ar.ilike.%${f.q}%,description_ar.ilike.%${f.q}%`);
+      if(f.genre)  q=q.contains('genres',[f.genre]);
+      if(f.genre_ar)q=q.contains('genres_ar',[f.genre_ar]);
+      if(f.year)   q=q.eq('year',+f.year);
+      if(f.rating) q=q.gte('rating',+f.rating);
+      if(f.lang)   q=q.eq('language',f.lang);
+      if(f.ids)    q=q.in('id',f.ids);
+      const sc={rating:'rating',views:'views',year:'year'}[f.sort]||'created_at';
+      q=q.order(sc,{ascending:false,nullsLast:true}).limit(f.limit||48);
+      const{data}=await q;return data||[];
+    }catch{return[];}
+  },
+  async getMovie(id) {
+    try{
+      const{data,error}=await sb.from('movies').select('*').eq('id',id).single();
+      if(error)throw error;
+      sb.from('movies').update({views:((data?.views||0)+1)}).eq('id',id).then(null,()=>{});
+      return data;
+    }catch(e){throw e;}
+  },
+  async getSeasons(mid) {
+    try{const{data}=await sb.from('seasons').select('*').eq('movie_id',mid).order('season_number');return data||[];}catch{return[];}
+  },
+  async getEpisodes(sid) {
+    try{const{data}=await sb.from('episodes').select('*').eq('season_id',sid).order('episode_number');return data||[];}catch{return[];}
+  },
+  async getTodayEps() {
+    try{
+      const today=new Date().toISOString().split('T')[0];
+      const{data:eps}=await sb.from('episodes').select('*').eq('release_date',today).limit(12);
+      if(!eps?.length)return[];
+      const mids=[...new Set(eps.map(e=>e.movie_id))];
+      const{data:mvs}=await sb.from('movies').select('id,title,title_ar,poster,type').in('id',mids);
+      return eps.map(e=>({...e,movie:mvs?.find(m=>m.id===e.movie_id)}));
+    }catch{return[];}
+  },
+  async getChannels(cat='') {
+    try{
+      let q=sb.from('channels').select('*').eq('active',true).order('sort_order').order('created_at',{ascending:false});
+      if(cat&&cat!=='all')q=q.or(`category.eq.${cat},category_ar.eq.${cat}`);
+      const{data}=await q;return data||[];
+    }catch{return[];}
+  },
+  async getCategories() {
+    try{const{data}=await sb.from('categories').select('*').order('sort_order');return data||[];}catch{return[];}
+  },
+  async getPerson(id) {
+    try{const{data}=await sb.from('persons').select('*').eq('id',id).single();return data;}catch{return null;}
+  },
+  async getPersonWorks(name, nameAr) {
+    try{
+      const ors=[];
+      if(name) ors.push(`director_name.ilike.%${name}%`);
+      if(nameAr) ors.push(`director_name_ar.ilike.%${nameAr}%`);
+      const{data}=await sb.from('movies').select('id,title,title_ar,poster,type,year,rating').eq('active',true).or(ors.join(',') || 'id.neq.00000000-0000-0000-0000-000000000000').limit(32);
+      return data||[];
+    }catch{return[];}
+  },
+  async getAds() {
+    try{const{data}=await sb.from('ads').select('*').eq('active',true);return data||[];}catch{return[];}
+  },
+  async trackAd(id, col) {
+    try{await sb.rpc('increment_ad_stat',{row_id:id,stat_col:col});}catch{}
+  },
+  async getWatchlist(fp) {
+    try{
+      const{data}=await sb.from('user_watchlist').select('movie_id').eq('fp',fp);
+      return(data||[]).map(d=>d.movie_id);
+    }catch{return[];}
+  },
+  async addToWatchlist(fp,movieId) {
+    try{await sb.from('user_watchlist').upsert({fp,movie_id:movieId},{onConflict:'fp,movie_id'});}catch{}
+  },
+  async removeFromWatchlist(fp,movieId) {
+    try{await sb.from('user_watchlist').delete().eq('fp',fp).eq('movie_id',movieId);}catch{}
+  },
+  async verifySub(code,fp,ua='') {
+    try{
+      const{data:sub,error}=await sb.from('subscriptions').select('*').eq('code',code.toUpperCase().trim()).single();
+      if(error||!sub)return{ok:false,msg:'كود غير صحيح'};
+      if(!sub.active)return{ok:false,msg:'الاشتراك غير نشط'};
+      if(sub.expires_at&&new Date(sub.expires_at)<new Date())return{ok:false,msg:'انتهت الصلاحية'};
+      const devs=sub.devices||[]; const ex=devs.find(d=>d.fp===fp);
+      if(ex){await sb.from('subscriptions').update({devices:devs.map(d=>d.fp===fp?{...d,seen:new Date().toISOString(),ua}:d)}).eq('id',sub.id);return{ok:true};}
+      if(devs.length>=sub.max_devices)return{ok:false,msg:`تجاوزت حد الأجهزة (${sub.max_devices})`};
+      devs.push({fp,ua,reg:new Date().toISOString(),seen:new Date().toISOString()});
+      await sb.from('subscriptions').update({devices:devs}).eq('id',sub.id);
+      return{ok:true,registered:true};
+    }catch(e){return{ok:false,msg:e.message};}
+  }
+};
+function dfltSettings(){return{maintenance_on:false,sub_required:false,ads_enabled:true,site_title:'Shahid365',site_title_ar:'شاهد 365',trending_ids:[],logo_url:'',splash_enabled:false,splash_video_url:'',splash_duration:5};}
+
+// ══════════════════════════════════════════════════════
+//  ADBLOCK
+// ══════════════════════════════════════════════════════
+async function detectAdblock() {
+  try{
+    const t=document.createElement('div'); t.innerHTML='&nbsp;'; t.className='adsbox pub_300x250 pub_728x90';
+    t.style.cssText='width:1px;height:1px;position:absolute;left:-9999px;top:-9999px'; document.body.appendChild(t);
+    await new Promise(r=>setTimeout(r,130));
+    const blocked=t.offsetHeight===0||window.getComputedStyle(t).display==='none'; t.remove();
+    if(blocked&&ST.settings?.ads_enabled!==false)$('adblock-warn').style.display='flex';
+  }catch{}
+}
+async function checkAdblock() { $('adblock-warn').style.display='none'; await detectAdblock(); if($('adblock-warn').style.display==='none') location.reload(); }
+
+// ══════════════════════════════════════════════════════
+//  ADS
+// ══════════════════════════════════════════════════════
+function canShowAd(ad) {
+  if(ST.settings?.ads_enabled===false)return false;
+  const f=ad.frequency||'once_per_session';
+  if(f==='once_per_session'&&ST.adSeen[ad.id])return false;
+  if(f==='once_per_day'&&localStorage.getItem(`s365ad_${ad.id}`)=== new Date().toDateString())return false;
+  return true;
+}
+function markAdShown(ad) {
+  if(ad.frequency==='once_per_session'){ST.adSeen[ad.id]=true;sessionStorage.setItem('s365_ad',JSON.stringify(ST.adSeen));}
+  if(ad.frequency==='once_per_day')localStorage.setItem(`s365ad_${ad.id}`,new Date().toDateString());
+  DB.trackAd(ad.id,'impressions');
+}
+function scheduleAd() {
+  if(!ST.activeAds.length||ST.settings?.ads_enabled===false)return;
+  const floats=ST.activeAds.filter(a=>a.placement==='floating'&&a.image_url&&canShowAd(a));
+  if(!floats.length)return;
+  const ad=floats[Math.floor(Math.random()*floats.length)];
+  clearTimeout(ST._adTimer);
+  ST._adTimer=setTimeout(()=>showFloatAd(ad),ad.delay_ms||3500);
+}
+function showFloatAd(ad) {
+  document.querySelectorAll('.float-ad').forEach(e=>e.remove());
+  markAdShown(ad);
+  const dur=(ad.banner_secs||8)*1000;
+  const div=document.createElement('div'); div.className='float-ad gl';
+  div.innerHTML=`
+    <div class="fad-close" id="fad-x" style="cursor:pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </div>
+    <a href="${esc(ad.target_url||'#')}" target="_blank" rel="noreferrer" id="fad-lnk">
+      <img class="fad-img" src="${esc(ad.image_url)}" alt="" onerror="this.closest('.float-ad')?.remove()"/>
+    </a>
+    <div class="fad-prog" id="fad-p" style="transition:width ${dur}ms linear;width:100%"></div>`;
+  document.body.appendChild(div);
+  requestAnimationFrame(()=>{const p=div.querySelector('#fad-p');if(p)p.style.width='0%';});
+  let ok=false; setTimeout(()=>ok=true,1600);
+  div.querySelector('#fad-x')?.addEventListener('click',()=>{if(ok)div.remove();});
+  div.querySelector('#fad-lnk')?.addEventListener('click',()=>DB.trackAd(ad.id,'clicks'));
+  if(dur>0)setTimeout(()=>div.remove(),dur+500);
+}
+
+// ══════════════════════════════════════════════════════
+//  HERO SLIDER
+// ══════════════════════════════════════════════════════
+function heroHTML(items) {
+  return `<div class="hero" id="hero">
+    ${items.map((m,i)=>{
+      const title=ST.lang==='ar'?(m.title_ar||m.title):(m.title||m.title_ar)||'';
+      const desc=ST.lang==='ar'?(m.description_ar||m.description||''):(m.description||m.description_ar||'');
+      const genres=ST.lang==='ar'?(m.genres_ar||m.genres||[]):(m.genres||[]);
+      return `
+      <div class="hero-slide" data-i="${i}" style="position:absolute;inset:0;opacity:${i===0?1:0};transition:opacity .9s;z-index:${i===0?2:1}">
+        <img class="hero-bg-img${i===0?' hero-bg-anim':''}" src="${esc(m.backdrop||m.poster||'')}" alt="" loading="${i===0?'eager':'lazy'}" onerror="this.style.opacity=0"/>
+        <div class="hero-veil" style="background:${ST.lang==='ar'
+          ?'linear-gradient(to left,rgba(4,4,15,.97) 0%,rgba(4,4,15,.5) 50%,rgba(4,4,15,.1) 100%)'
+          :'linear-gradient(to right,rgba(4,4,15,.97) 0%,rgba(4,4,15,.5) 50%,rgba(4,4,15,.1) 100%)'}"></div>
+        <div class="hero-bot"></div>
+        <div class="hero-cont">
+          <div class="hero-inner" style="animation:fadeUp .8s var(--ease) both">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;flex-wrap:wrap">
+              <span class="badge ${m.type==='movie'?'bb':'bgo'}">${m.type==='movie'?t('movie'):t('series')}</span>
+              ${m.rating?`<span style="color:var(--go);font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:4px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                ${m.rating}</span>`:''}
+              ${m.year?`<span style="color:var(--t3);font-size:12.5px">• ${m.year}</span>`:''}
+            </div>
+            <h1 class="hero-title">${esc(title)}</h1>
+            ${desc?`<p class="hero-desc">${esc(desc.slice(0,195))}${desc.length>195?'…':''}</p>`:''}
+            <div class="hero-genres">${(genres||[]).slice(0,4).map(g=>`<span class="hero-genre" onclick="go('category',{slug:encodeSlug('${esc(g)}'),name:'${esc(g)}'})">${esc(g)}</span>`).join('')}</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button class="btn bp btn-lg" onclick="go('detail',{id:'${m.id}'})">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                ${t('watch')}
+              </button>
+              ${m.trailer_url?`<button class="btn bs btn-lg" onclick="openVP('${esc(m.trailer_url)}','${esc(title)}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+                ${t('trailer')}
+              </button>`:''}
+              <button class="btn bs btn-lg" onclick="toggleList('${m.id}',event)">
+                <svg data-lid="${m.id}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${inList(m.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                ${t('addList')}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('')}
+    <div class="hero-dots" id="hero-dots">
+      ${items.map((_,i)=>`<div class="hero-dot ${i===0?'act':''}" onclick="goHero(${i})"></div>`).join('')}
+    </div>
+  </div>`;
+}
+function initHero(n) { if(n<2)return; clearInterval(ST._heroTimer); ST._heroIdx=0; ST._heroTimer=setInterval(()=>goHero((ST._heroIdx+1)%n),7000); }
+function goHero(i) {
+  const sl=document.querySelectorAll('.hero-slide'); const dt=document.querySelectorAll('.hero-dot');
+  sl.forEach((s,j)=>{s.style.opacity=j===i?1:0;s.style.zIndex=j===i?2:1;});
+  dt.forEach((d,j)=>d.classList.toggle('act',j===i)); ST._heroIdx=i;
+}
+
+// ══════════════════════════════════════════════════════
+//  CARD HTML
+// ══════════════════════════════════════════════════════
+function encodeSlug(g) { return encodeURIComponent(g.toLowerCase().replace(/\s+/g,'-')); }
+
+function cardHTML(m, delay=0, trending=false) {
+  const title=ST.lang==='ar'?(m.title_ar||m.title):(m.title||m.title_ar)||'—';
+  const cls=trending?'tcard':'card';
+  return `<div class="${cls}" style="animation:fadeUp .5s ${delay}s var(--ease) both" onclick="go('detail',{id:'${m.id}'})">
+    <img class="card-img" src="${esc(m.poster||'')}" alt="${esc(title)}" loading="lazy" onerror="this.style.background='var(--bg3)'"/>
+    <div class="card-ov"></div><div class="card-shine"></div>
+    ${trending?`<div class="trend-num">${m._rank||''}</div>`:''}
+    <div class="card-bdg"><span class="badge ${m.type==='movie'?'bb':'bgo'}">${m.type==='movie'?t('movie'):t('series')}</span></div>
+    <div class="card-info">
+      <div class="card-title">${esc(title)}</div>
+      <div class="card-meta">
+        ${m.rating?`<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="var(--go)" stroke="var(--go)" stroke-width="0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span style="color:var(--go);font-weight:700">${m.rating}</span>`:''}
+        ${m.year?`<span style="color:var(--t3)">•</span><span>${m.year}</span>`:''}
+      </div>
+      <div class="card-play">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        ${t('watch')}
+      </div>
+    </div>
+  </div>`;
+}
+
+function secHTML(title, barColor, items, moreAction='', isTrend=false) {
+  if(!items.length)return'';
+  const bar=barColor||'linear-gradient(180deg,var(--a),var(--a2))';
+  return `<div class="sec">
+    <div class="sec-h">
+      <div class="sec-title"><div class="sec-bar" style="background:${bar}"></div>${title}</div>
+      ${moreAction?`<div class="sec-more" onclick="${moreAction}">${t('viewAll')}<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>`:''}
+    </div>
+    <div class="row">${items.map((m,i)=>cardHTML(m,i*.04,isTrend)).join('')}</div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════════
+//  HOME
+// ══════════════════════════════════════════════════════
+async function renderHome() {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try {
+    const [featured,trending,moviesLatest,seriesLatest,todayEps,channels] = await Promise.all([
+      DB.getFeatured(), DB.getTrending(),
+      DB.getMovies({type:'movie',sort:'created_at',limit:18}),
+      DB.getMovies({type:'series',sort:'created_at',limit:18}),
+      DB.getTodayEps(), DB.getChannels(),
+    ]);
+    // Build reels from trailers of trending items
+    const reelItems = trending.filter(m=>m.trailer_url).slice(0,8);
+    let html='<div class="view">';
+    if(featured.length) html+=heroHTML(featured);
+    html+='<div class="secs">';
+    if(trending.length) html+=secHTML(t('trending'),'linear-gradient(180deg,var(--r),var(--go))',trending.map((m,i)=>({...m,_rank:i+1})),"go('browse',{sort:'views'})",true);
+    if(moviesLatest.length) html+=secHTML(t('latest')+' — '+t('movie'),null,moviesLatest,"go('movies')");
+    if(seriesLatest.length) html+=secHTML(t('latest')+' — '+t('series'),'linear-gradient(180deg,var(--go),#e0a000)',seriesLatest,"go('series')");
+    if(reelItems.length) html+=reelsHTML(reelItems);
+    if(channels.length) html+=liveBannerHTML(channels);
+    if(todayEps.length) html+=todayEpsHTML(todayEps);
+    html+='</div></div>';
+    app.innerHTML=html;
+    initHero(featured.length);
+    initReels();
+  } catch(e) {
+    app.innerHTML=errHTML(e.message);
+  }
+}
+
+function reelsHTML(items) {
+  return `<div class="sec">
+    <div class="sec-h"><div class="sec-title"><div class="sec-bar" style="background:linear-gradient(180deg,var(--cy),var(--a))"></div>${t('reels')}</div></div>
+    <div class="reels-wrap">
+      <div class="reels-inner" id="reels-inner">
+        ${items.map(m=>{
+          const title=ST.lang==='ar'?(m.title_ar||m.title):(m.title||m.title_ar)||'';
+          return `<div class="reel-card" onclick="openVP('${esc(m.trailer_url||'')}','${esc(title)}')">
+            <div class="reel-overlay"></div>
+            <div class="reel-info">
+              <div style="font-weight:700;font-size:13px;margin-bottom:4px">${esc(title)}</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.65)">${m.year||''}</div>
+            </div>
+            <div class="reel-play">
+              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="rgba(255,255,255,.9)" style="filter:drop-shadow(0 0 12px rgba(0,0,0,.6))"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            ${m.backdrop?`<img src="${esc(m.backdrop)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1" loading="lazy" alt=""/>`:
+            `<div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--bg2),var(--bg3));z-index:-1"></div>`}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+function initReels() {
+  const inner=document.getElementById('reels-inner');
+  if(!inner)return;
+  let startX, isDragging=false;
+  inner.addEventListener('mousedown',e=>{startX=e.clientX;isDragging=true;});
+  inner.addEventListener('mousemove',e=>{if(isDragging)inner.scrollLeft-=(e.clientX-startX)*.8;startX=e.clientX;});
+  inner.addEventListener('mouseup',()=>isDragging=false);
+  inner.addEventListener('mouseleave',()=>isDragging=false);
+}
+
+function liveBannerHTML(channels) {
+  return `<div class="live-ban gl" style="margin-bottom:42px">
+    <div>
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+        <span class="live-dot"></span>
+        <span style="color:var(--r);font-weight:800;font-size:11.5px;letter-spacing:1px">LIVE</span>
+      </div>
+      <h3 style="font-family:var(--fo);font-size:21px;font-weight:700;margin-bottom:3px">${t('live')}</h3>
+      <span style="color:var(--t3);font-size:12.5px">${channels.length} ${t('available')}</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      ${channels.slice(0,5).map(c=>`
+      <div class="gl" style="padding:7px 13px;border-radius:10px;display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600">
+        ${c.logo?`<img src="${esc(c.logo)}" style="width:20px;height:20px;border-radius:4px;object-fit:contain">`:''}
+        <span>${esc(ST.lang==='ar'?(c.name_ar||c.name):c.name)}</span>
+      </div>`).join('')}
+    </div>
+    <button class="btn bp" onclick="go('live')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      ${t('liveWatch')}
+    </button>
+  </div>`;
+}
+
+function todayEpsHTML(eps) {
+  if(!eps.length)return'';
+  return `<div class="sec">
+    <div class="sec-title" style="margin-bottom:16px"><div class="sec-bar" style="background:linear-gradient(180deg,var(--r),var(--go))"></div>${t('todayEps')}</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px">
+      ${eps.map(ep=>{
+        const m=ep.movie||{}; const title=ST.lang==='ar'?(m.title_ar||m.title):(m.title||m.title_ar)||'—';
+        const et=ST.lang==='ar'?(ep.title_ar||ep.title):(ep.title||ep.title_ar)||'';
+        return `<div class="gl" style="border-radius:14px;padding:13px;display:flex;gap:11px;cursor:pointer;transition:background .2s" onclick="go('detail',{id:'${m.id}'})">
+          <img src="${esc(ep.thumbnail||m.poster||'')}" style="width:56px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--bg3)" loading="lazy" alt=""/>
+          <div style="flex:1;overflow:hidden">
+            <div style="font-weight:700;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(title)}</div>
+            <div style="font-size:11.5px;color:var(--t3);margin-bottom:8px">${t('ep')} ${ep.episode_number}${et?' — '+esc(et):''}</div>
+            <button class="btn bp btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              ${t('watch')}
+            </button>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+function errHTML(msg, showBack=false) {
+  return `<div style="display:flex;align-items:center;justify-content:center;min-height:60vh;padding:32px">
+    <div class="err-card gl2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--r)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+      <h3 style="font-family:var(--fo);font-size:20px;font-weight:700;margin-bottom:8px;color:var(--t1)">حدث خطأ</h3>
+      <p style="color:var(--t3);font-size:13px;margin-bottom:18px">${esc(msg||'خطأ غير معروف')}</p>
+      ${showBack?`<button class="btn bp" onclick="history.back()">رجوع</button>`:`<button class="btn bs" onclick="App.render()">إعادة المحاولة</button>`}
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════════
+//  BROWSE
+// ══════════════════════════════════════════════════════
+async function renderBrowse(p={}) {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try{
+    const items=await DB.getMovies(p);
+    const type=p.type||'';
+    const ptitle=type==='movie'?t('movie'):type==='series'?t('series'):(p.q?`"${esc(p.q)}"`:t('all'));
+    app.innerHTML=`<div class="view">
+      <div class="browse-h">
+        <h2 style="font-family:var(--fo);font-size:26px;font-weight:700;margin-bottom:18px">${ptitle}</h2>
+        <div class="filters">
+          <button class="fb ${!type?'act':''}" onclick="go('browse',{...${JSON.stringify(p)},type:''})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            ${t('all')}
+          </button>
+          <button class="fb ${type==='movie'?'act':''}" onclick="go('browse',{...${JSON.stringify(p)},type:'movie'})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="7" y2="7"/><line x1="2" x2="22" y1="17" y2="17"/></svg>
+            ${t('movie')}
+          </button>
+          <button class="fb ${type==='series'?'act':''}" onclick="go('browse',{...${JSON.stringify(p)},type:'series'})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            ${t('series')}
+          </button>
+          <select class="fsel" onchange="go('browse',{...${JSON.stringify(p)},sort:this.value})">
+            <option value="created_at">${t('latest')}</option>
+            <option value="rating" ${p.sort==='rating'?'selected':''}>${t('topRated')}</option>
+            <option value="views" ${p.sort==='views'?'selected':''}>${t('trending')}</option>
+            <option value="year" ${p.sort==='year'?'selected':''}>${t('year')}</option>
+          </select>
+          <span style="color:var(--t3);font-size:12px;margin-inline-start:auto">${items.length}</span>
+        </div>
+      </div>
+      <div style="padding:0 22px 60px;max-width:1440px;margin:0 auto">
+        ${items.length
+          ?`<div class="cgrid">${items.map((m,i)=>cardHTML(m,i*.025)).join('')}</div>`
+          :`<div class="empty">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;opacity:.4"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <div style="font-size:15px">${t('noRes')}</div>
+            </div>`}
+      </div>
+    </div>`;
+  }catch(e){app.innerHTML=errHTML(e.message);}
+}
+
+async function renderSearch(q) { await renderBrowse({q}); }
+
+// ══════════════════════════════════════════════════════
+//  DETAIL
+// ══════════════════════════════════════════════════════
+async function renderDetail(id) {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try{
+    const m=await DB.getMovie(id);
+    const title=ST.lang==='ar'?(m.title_ar||m.title):(m.title||m.title_ar)||'—';
+    const desc=ST.lang==='ar'?(m.description_ar||m.description||''):(m.description||m.description_ar||'');
+    const genres=ST.lang==='ar'?(m.genres_ar||m.genres||[]):(m.genres||[]);
+    const cast=m.cast_data||[];
+    let seasonsHTML='';
+    if(m.type==='series'){seasonsHTML=await buildSeasonsHTML(m.id);}
+    const castHTML=cast.length?`
+    <div class="sec" style="margin-bottom:26px">
+      <div class="sec-title" style="margin-bottom:14px"><div class="sec-bar" style="background:linear-gradient(180deg,var(--pu),#7B5FFF)"></div>${t('cast')}</div>
+      <div class="cast-row">${cast.map(c=>castCardHTML(c)).join('')}</div>
+    </div>`:''
+    ;
+    app.innerHTML=`<div class="view">
+      <div class="det-back">
+        <div class="det-bg" style="background-image:url('${esc(m.backdrop||m.poster||'')}')"></div>
+        <div class="det-side" style="background:${ST.lang==='ar'
+          ?'linear-gradient(to left,rgba(4,4,15,.97) 0%,rgba(4,4,15,.5) 50%,rgba(4,4,15,.1) 100%)'
+          :'linear-gradient(to right,rgba(4,4,15,.97) 0%,rgba(4,4,15,.5) 50%,rgba(4,4,15,.1) 100%)'}"></div>
+        <div class="det-bot"></div>
+        <div class="det-cont">
+          <div class="det-in">
+            <img class="det-poster" src="${esc(m.poster||'')}" alt="${esc(title)}" onerror="this.style.background='var(--bg3)'" loading="eager"/>
+            <div style="flex:1">
+              <button class="btn bs btn-sm" onclick="history.back()" style="margin-bottom:11px;font-size:12px;display:flex;align-items:center;gap:5px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                ${t('back')}
+              </button>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;flex-wrap:wrap">
+                <span class="badge ${m.type==='movie'?'bb':'bgo'}">${m.type==='movie'?t('movie'):t('series')}</span>
+                ${m.rating?`<span style="color:var(--go);font-weight:800;font-size:15px;display:flex;align-items:center;gap:4px">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  ${m.rating}</span>`:''}
+                ${m.year?`<span style="color:var(--t3);font-size:12.5px">• ${m.year}</span>`:''}
+                ${m.duration?`<span style="color:var(--t3);font-size:12.5px">• ${m.duration} دق</span>`:''}
+              </div>
+              <h1 class="det-title">${esc(title)}</h1>
+              ${m.director_name?`<div style="font-size:13px;color:var(--t2);margin-bottom:9px;display:flex;align-items:center;gap:6px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                ${t('director')}: <span style="color:var(--a)">${esc(ST.lang==='ar'?(m.director_name_ar||m.director_name):m.director_name)}</span>
+              </div>`:''}
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px">
+                ${(genres||[]).map(g=>`<span class="hero-genre" onclick="go('category',{slug:encodeSlug('${esc(g)}'),name:'${esc(g)}'})">${esc(g)}</span>`).join('')}
+              </div>
+              ${desc?`<p style="font-size:13.5px;color:var(--t2);line-height:1.88;max-width:580px;margin-bottom:18px">${esc(desc.slice(0,280))}${desc.length>280?'…':''}</p>`:''}
+              <div style="display:flex;gap:9px;flex-wrap:wrap">
+                ${m.type==='movie'&&m.video_url?`<button class="btn bp btn-lg" onclick="openVP('${esc(m.video_url)}','${esc(title)}','${esc(m.subtitle_url||'')}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  ${t('watch')}
+                </button>`:''}
+                ${m.type==='series'?`<button class="btn bp btn-lg" onclick="$('seasons-sec')?.scrollIntoView({behavior:'smooth'})">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  ${t('watch')}
+                </button>`:''}
+                ${m.trailer_url?`<button class="btn bs btn-lg" onclick="openVP('${esc(m.trailer_url)}','${esc(title)}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+                  ${t('trailer')}
+                </button>`:''}
+                ${m.dl_url?`<button class="btn bs btn-lg" onclick="openDlModal('${m.id}','${esc(title)}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                  ${t('dl')}
+                </button>`:''}
+                <button class="btn bs btn-lg" onclick="toggleList('${m.id}',event)">
+                  <svg data-lid="${m.id}" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="${inList(m.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  ${inList(m.id)?t('rmList'):t('addList')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="det-body">
+        ${castHTML}
+        ${seasonsHTML?`<div class="sec" id="seasons-sec">
+          <div class="sec-title" style="margin-bottom:16px"><div class="sec-bar" style="background:linear-gradient(180deg,var(--go),#e0a000)"></div>${t('season')}</div>
+          ${seasonsHTML}
+        </div>`:''}
+      </div>
+    </div>`;
+  }catch(e){app.innerHTML=errHTML(e.message,true);}
+}
+
+function castCardHTML(c) {
+  const name=ST.lang==='ar'?(c.name_ar||c.name):(c.name||c.name_ar)||'—';
+  const role=c.role||'';
+  const clickAction=c.person_id?`go('person',{id:'${c.person_id}'})`:``;
+  return `<div class="cast-c" ${clickAction?`onclick="${clickAction}"`:''}>
+    <img class="cast-photo" src="${esc(c.photo||'')}" loading="lazy" alt="${esc(name)}" onerror="this.style.background='var(--bg3)'"/>
+    <div class="cast-name">${esc(name)}</div>
+    ${role?`<div class="cast-role">${esc(role)}</div>`:''}
+  </div>`;
+}
+
+async function buildSeasonsHTML(movieId) {
+  let html='';
+  try{
+    const seasons=await DB.getSeasons(movieId);
+    for(const s of seasons){
+      const eps=await DB.getEpisodes(s.id);
+      const st=ST.lang==='ar'?(s.title_ar||s.title):(s.title||s.title_ar)||`${t('season')} ${s.season_number}`;
+      html+=`<div class="s-block">
+        <div class="s-head" onclick="toggleSeason('sb-${s.id}','sarr-${s.id}')">
+          <span style="font-weight:700">${esc(st)}</span>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="font-size:12px;color:var(--t3)">${eps.length} ${t('ep')}</span>
+            <svg class="s-arr" id="sarr-${s.id}" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="s-body" id="sb-${s.id}">
+          ${eps.map(ep=>{
+            const et=ST.lang==='ar'?(ep.title_ar||ep.title):(ep.title||ep.title_ar)||`${t('ep')} ${ep.episode_number}`;
+            const isFuture=ep.release_date&&new Date(ep.release_date)>new Date();
+            return `<div class="ep-row" ${!isFuture&&ep.video_url?`onclick="openVP('${esc(ep.video_url)}','${esc(et)}','${esc(ep.subtitle_url||'')}')"`:''}
+              style="${isFuture?'opacity:.55':''}">
+              <div class="ep-num">${ep.episode_number}</div>
+              ${ep.thumbnail?`<img src="${esc(ep.thumbnail)}" style="width:78px;height:44px;border-radius:7px;object-fit:cover;flex-shrink:0;background:var(--bg3)" loading="lazy" alt="">`:''}
+              <div style="flex:1;overflow:hidden">
+                <div style="font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(et)}</div>
+                ${ep.duration?`<div style="font-size:11.5px;color:var(--t3)">${ep.duration} دق</div>`:''}
+              </div>
+              ${isFuture?`<span class="badge bgo">${t('comingSoon')}</span>`:''}
+              ${!isFuture&&ep.video_url?`<div style="display:flex;gap:6px">
+                <button class="btn bp btn-xs">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                ${ep.dl_url?`<button class="btn bs btn-xs" onclick="event.stopPropagation();openDlModal('${ep.id}','${esc(et)}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </button>`:''}</div>`:''}
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+    }
+  }catch{}
+  return html;
+}
+function toggleSeason(bodyId,arrId) {
+  const b=$(bodyId),a=$(arrId); if(!b)return;
+  const open=b.classList.toggle('open');
+  if(a){a.style.transform=open?'rotate(180deg)':'';a.style.color=open?'var(--a)':'currentColor';}
+}
+
+// ══════════════════════════════════════════════════════
+//  PERSON (ACTOR FILMOGRAPHY)
+// ══════════════════════════════════════════════════════
+async function renderPerson(id) {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try{
+    const p=await DB.getPerson(id);
+    if(!p)throw new Error('Person not found');
+    const name=ST.lang==='ar'?(p.name_ar||p.name):(p.name||p.name_ar)||'—';
+    const bio=ST.lang==='ar'?(p.bio_ar||p.bio||''):(p.bio||p.bio_ar||'');
+    // Find works where this person appears in cast_data or as director
+    const works=await DB.getPersonWorks(p.name,p.name_ar);
+    app.innerHTML=`<div class="view">
+      <div class="person-h">
+        <img class="person-photo" src="${esc(p.photo||'')}" alt="${esc(name)}" onerror="this.style.background='var(--bg3)'" loading="eager"/>
+        <div style="flex:1">
+          <button class="btn bs btn-sm" onclick="history.back()" style="margin-bottom:13px;font-size:12px;display:flex;align-items:center;gap:5px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            ${t('back')}
+          </button>
+          <h1 style="font-family:var(--fo);font-size:clamp(24px,4vw,42px);font-weight:700;margin-bottom:9px;letter-spacing:-.5px">${esc(name)}</h1>
+          ${bio?`<p style="font-size:13.5px;color:var(--t2);line-height:1.88;max-width:580px">${esc(bio.slice(0,380))}${bio.length>380?'…':''}</p>`:''}
+        </div>
+      </div>
+      ${works.length?`
+      <div class="secs" style="padding-top:30px">
+        <div class="sec">
+          <div class="sec-title"><div class="sec-bar" style="background:linear-gradient(180deg,var(--a),var(--a2))"></div>${t('works')} (${works.length})</div>
+          <div class="cgrid" style="margin-top:14px">${works.map((m,i)=>cardHTML(m,i*.03)).join('')}</div>
+        </div>
+      </div>`:`
+      <div class="empty" style="padding-top:40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 14px;opacity:.35"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="7" y2="7"/><line x1="2" x2="22" y1="17" y2="17"/></svg>
+        <div>${t('noRes')}</div>
+      </div>`}
+    </div>`;
+  }catch(e){app.innerHTML=errHTML(e.message,true);}
+}
+
+// ══════════════════════════════════════════════════════
+//  CATEGORY PAGE
+// ══════════════════════════════════════════════════════
+async function renderCategory(slug, name) {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try{
+    const decodedName=decodeURIComponent(name||slug||'');
+    const cats=await DB.getCategories();
+    const cat=cats.find(c=>c.slug===slug||c.name===decodedName||c.name_ar===decodedName);
+    const catName=cat?(ST.lang==='ar'?(cat.name_ar||cat.name):cat.name):decodedName;
+    const catColor=cat?.color||'var(--a)';
+    const related=cat?.related||[];
+    const items=await DB.getMovies({genre:decodedName, genre_ar:decodedName, limit:48});
+    const relatedCats=cats.filter(c=>related.includes(c.slug)||related.includes(c.name));
+    app.innerHTML=`<div class="view">
+      <div style="padding:24px 22px 0;max-width:1440px;margin:0 auto">
+        <button class="btn bs btn-sm" onclick="history.back()" style="margin-bottom:20px;display:flex;align-items:center;gap:5px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          ${t('back')}
+        </button>
+      </div>
+      <div class="cat-hero gl" style="background:linear-gradient(135deg,${catColor}22,${catColor}08)">
+        <div style="width:56px;height:56px;border-radius:16px;background:${catColor}22;border:1px solid ${catColor}44;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="${catColor}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+        </div>
+        <div style="position:relative;z-index:1">
+          <h1 style="font-family:var(--fo);font-size:clamp(22px,4vw,38px);font-weight:700;margin-bottom:5px;color:${catColor}">${esc(catName)}</h1>
+          <span style="color:var(--t3);font-size:13px">${items.length} عمل</span>
+        </div>
+      </div>
+      ${relatedCats.length?`
+      <div style="padding:0 22px;max-width:1440px;margin:0 auto">
+        <div style="font-size:13px;font-weight:700;color:var(--t3);margin-bottom:10px;display:flex;align-items:center;gap:7px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          ${t('relatedCats')}
+        </div>
+        <div class="cat-related">
+          ${relatedCats.map(c=>`<div class="cat-chip" onclick="go('category',{slug:'${c.slug}',name:'${esc(ST.lang==='ar'?(c.name_ar||c.name):c.name)}'})">
+            ${esc(ST.lang==='ar'?(c.name_ar||c.name):c.name)}
+          </div>`).join('')}
+        </div>
+      </div>`:''}
+      <div style="padding:0 22px 60px;max-width:1440px;margin:0 auto">
+        ${items.length
+          ?`<div class="cgrid">${items.map((m,i)=>cardHTML(m,i*.025)).join('')}</div>`
+          :`<div class="empty">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 14px;opacity:.35"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="7" y2="7"/><line x1="2" x2="22" y1="17" y2="17"/></svg>
+            <div>${t('noRes')}</div>
+          </div>`}
+      </div>
+    </div>`;
+  }catch(e){app.innerHTML=errHTML(e.message,true);}
+}
+
+// ══════════════════════════════════════════════════════
+//  MY LIST
+// ══════════════════════════════════════════════════════
+async function renderMyList() {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try{
+    const ids=ST.myList;
+    let items=[];
+    if(ids.length)items=await DB.getMovies({ids,limit:100});
+    app.innerHTML=`<div class="view">
+      <div class="browse-h">
+        <h2 style="font-family:var(--fo);font-size:26px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          ${t('myList')}
+        </h2>
+      </div>
+      ${items.length?`
+      <div style="padding:0 22px 60px;max-width:1440px;margin:0 auto">
+        <div class="cgrid">${items.map((m,i)=>cardHTML(m,i*.03)).join('')}</div>
+      </div>`:`
+      <div class="list-empty" style="min-height:60vh">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:.3"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <h3 style="font-family:var(--fo);font-size:22px;font-weight:700">${t('noList')}</h3>
+        <p style="color:var(--t3);font-size:13.5px;max-width:300px">تصفح الأفلام والمسلسلات واضغط على أيقونة القائمة لحفظها هنا</p>
+        <button class="btn bp" onclick="go('movies')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="7" y2="7"/><line x1="2" x2="22" y1="17" y2="17"/></svg>
+          تصفح الأفلام
+        </button>
+      </div>`}
+    </div>`;
+  }catch(e){app.innerHTML=errHTML(e.message);}
+}
+
+// ══════════════════════════════════════════════════════
+//  LIVE TV
+// ══════════════════════════════════════════════════════
+async function renderLive() {
+  const app=$('app');
+  app.innerHTML=`<div class="loading"><div class="spin"></div></div>`;
+  try{
+    const channels=await DB.getChannels(); ST._liveChs=channels;
+    const cats=['all',...new Set(channels.map(c=>ST.lang==='ar'?(c.category_ar||c.category):(c.category||c.category_ar)).filter(Boolean))];
+    renderLiveView(channels,cats);
+  }catch(e){app.innerHTML=errHTML(e.message);}
+}
+function renderLiveView(channels,cats) {
+  const cat=ST._liveCat||'all';
+  const list=cat==='all'?channels:channels.filter(c=>{const cc=ST.lang==='ar'?(c.category_ar||c.category):(c.category||c.category_ar);return cc===cat;});
+  const active=ST._liveCh;
+  $('app').innerHTML=`<div class="view">
+    <div class="live-h">
+      <div style="display:flex;align-items:center;gap:11px;margin-bottom:22px">
+        <span class="live-dot"></span>
+        <h2 style="font-family:var(--fo);font-size:26px;font-weight:700">${t('live')}</h2>
+        <span class="badge br">${channels.filter(c=>c.active).length}</span>
+      </div>
+      ${active?`
+      <div class="live-player-wrap gl2" id="live-box" style="margin-bottom:22px">
+        <div id="live-ph" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;z-index:1">
+          ${active.logo?`<img src="${esc(active.logo)}" style="width:68px;height:68px;border-radius:14px;object-fit:contain;background:rgba(255,255,255,.07);padding:6px">`:''}
+          <div style="font-family:var(--fo);font-size:20px;font-weight:700">${esc(ST.lang==='ar'?(active.name_ar||active.name):active.name)}</div>
+          <div style="display:flex;align-items:center;gap:6px"><span class="live-dot"></span><span style="color:var(--r);font-weight:700;font-size:12px;letter-spacing:1px">LIVE</span></div>
+        </div>
+      </div>
+      <button class="btn bs btn-sm" onclick="ST._liveCh=null;renderLive()" style="margin-bottom:16px;display:flex;align-items:center;gap:5px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        إغلاق
+      </button>`:'' }
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px">
+        ${cats.map(c=>`<button class="fb ${cat===c?'act':''}" onclick="ST._liveCat='${esc(c)}';renderLiveView(ST._liveChs,${JSON.stringify(cats)})">${c==='all'?t('all'):esc(c)}</button>`).join('')}
+      </div>
+    </div>
+    <div class="ch-grid">
+      ${list.map(ch=>{
+        const cn=ST.lang==='ar'?(ch.name_ar||ch.name):ch.name;
+        const cc=ST.lang==='ar'?(ch.category_ar||ch.category):ch.category;
+        return `<div class="ch-card gl ${active?.id===ch.id?'act':''}" onclick="${ch.active?`setLiveCh('${ch.id}')`:'return'}" style="${!ch.active?'opacity:.4':''}">
+          ${ch.logo?`<img src="${esc(ch.logo)}" style="width:52px;height:52px;border-radius:12px;object-fit:contain;background:rgba(255,255,255,.07);padding:4px" loading="lazy" onerror="this.style.display='none'">`:''}
+          <div style="font-weight:700;font-size:12.5px">${esc(cn)}</div>
+          ${cc?`<span class="badge bb" style="font-size:10px">${esc(cc)}</span>`:''}
+          <div style="display:flex;align-items:center;gap:5px;font-size:11px">
+            ${ch.active?`<span class="live-dot" style="width:5px;height:5px"></span><span style="color:var(--t2)">${t('available')}</span>`:`<span style="color:var(--t3)">${t('offline')}</span>`}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="height:40px"></div>
+  </div>`;
+  if(active) setTimeout(()=>playLiveCh(active),300);
+}
+function setLiveCh(id) { ST._liveCh=ST._liveChs.find(c=>c.id===id)||null; renderLiveView(ST._liveChs,[]); }
+function playLiveCh(ch) {
+  const box=$('live-box'); if(!box) return;
+  const url=ch.stream_url||'';
+  const isYT=url.includes('youtube.com')||url.includes('youtu.be');
+  if(isYT){
+    const vid=url.includes('watch?v=')?url.split('watch?v=')[1].split('&')[0]:url.split('/').pop().split('?')[0];
+    box.innerHTML=`<iframe src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>`;
+    return;
+  }
+  const video=document.createElement('video'); video.style.cssText='position:absolute;inset:0;width:100%;height:100%;background:#000'; video.controls=true; video.autoplay=true; video.playsInline=true;
+  box.innerHTML=''; box.appendChild(video);
+  if(url.includes('.m3u8')&&typeof videojs!=='undefined'){
+    const id='live-vjs-'+Date.now();
+    video.id=id; video.className='video-js';
+    box.innerHTML=''; box.appendChild(video);
+    const p=videojs(id,{autoplay:true,controls:true,sources:[{src:url,type:'application/x-mpegURL'}]});
+    ST._vpInst=p;
+  }else{video.src=url;video.play().catch(()=>{});}
+}
+
+// ══════════════════════════════════════════════════════
+//  DOWNLOADS PAGE
+// ══════════════════════════════════════════════════════
+function renderDownloads() {
+  const app=$('app');
+  const dls=ST.downloads;
+  app.innerHTML=`<div class="view">
+    <div class="browse-h">
+      <h2 style="font-family:var(--fo);font-size:26px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        ${t('myDl')}
+      </h2>
+    </div>
+    ${dls.length?`
+    <div style="padding:0 22px 60px;max-width:1440px;margin:0 auto">
+      <div class="cgrid">
+        ${dls.map(d=>`
+        <div class="gl" style="border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s var(--spring)" onclick="go('detail',{id:'${d.id}'})" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
+          <div style="padding:14px">
+            <div style="font-weight:700;font-size:13px;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(d.title)}</div>
+            <div style="font-size:11px;color:var(--t3);margin-bottom:10px">${d.quality||''}</div>
+            <div style="display:flex;gap:7px">
+              <button class="btn bp btn-xs" style="flex:1;justify-content:center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </button>
+              <button class="btn bs btn-xs" onclick="event.stopPropagation();ST.downloads=ST.downloads.filter(x=>x.id!=='${d.id}');localStorage.setItem('s365_dl',JSON.stringify(ST.downloads));haptic('medium');renderDownloads()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`:`
+    <div class="list-empty" style="min-height:60vh">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:.28"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      <h3 style="font-family:var(--fo);font-size:22px;font-weight:700">${t('noDl')}</h3>
+      <p style="color:var(--t3);font-size:13.5px">اضغط على زر التحميل في أي فيلم أو حلقة</p>
+    </div>`}
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════════
+//  VIDEO PLAYER (Video.js)
+// ══════════════════════════════════════════════════════
+function openVP(url, title='', subUrl='') {
+  if(!url) return;
+  const modal=$('vp-modal'), outer=$('vp-outer');
+  if(!modal||!outer) return;
+  // Destroy previous
+  if(ST._vpInst){try{ST._vpInst.dispose();}catch{}ST._vpInst=null;}
+  const isYT=url.includes('youtube.com')||url.includes('youtu.be');
+  if(isYT){
+    const vid=url.includes('watch?v=')?url.split('watch?v=')[1].split('&')[0]:url.split('/').pop().split('?')[0];
+    outer.innerHTML=`<div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden"><iframe src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&controls=1" allow="autoplay;encrypted-media;fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe></div>`;
+    modal.classList.add('open'); document.body.style.overflow='hidden'; return;
+  }
+  const vidId='vp-'+Date.now();
+  const srcType=url.includes('.m3u8')?'application/x-mpegURL':'video/mp4';
+  outer.innerHTML=`<video id="${vidId}" class="video-js vjs-big-play-centered" style="width:100%;aspect-ratio:16/9;border-radius:16px;" playsinline></video>`;
+  modal.classList.add('open'); document.body.style.overflow='hidden';
+  try{
+    const p=videojs(vidId,{
+      autoplay:true, controls:true, responsive:true, fluid:true,
+      sources:[{src:url,type:srcType}],
+      playbackRates:[0.25,0.5,0.75,1,1.25,1.5,2],
+      html5:{vhs:{overrideNative:true,enableLowInitialPlaylist:true}},
+      userActions:{hotkeys:true},
+    });
+    if(subUrl&&(subUrl.endsWith('.vtt')||subUrl.endsWith('.srt'))){
+      p.addRemoteTextTrack({src:subUrl,kind:'subtitles',srclang:'ar',label:'العربية',default:true},false);
+    }
+    ST._vpInst=p;
+  }catch(e){outer.innerHTML=`<video src="${esc(url)}" controls autoplay playsinline style="width:100%;aspect-ratio:16/9;border-radius:16px;background:#000"></video>`;}
+}
+
+function closeVP() {
+  if(ST._vpInst){try{ST._vpInst.pause();ST._vpInst.dispose();}catch{}ST._vpInst=null;}
+  $('vp-modal')?.classList.remove('open');
+  document.body.style.overflow='';
+  $('vp-outer').innerHTML='';
+  try{document.exitFullscreen?.();}catch{}
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('vp-modal')?.classList.contains('open'))closeVP();});
+
+// ══════════════════════════════════════════════════════
+//  SUBSCRIPTION GATE
+// ══════════════════════════════════════════════════════
+function renderSubGate() {
+  $('app').innerHTML=`
+  <div class="sub-gate">
+    <div class="gl2" style="border-radius:24px;padding:44px 38px;width:100%;max-width:450px;animation:slideUp .5s var(--ease) both;position:relative;z-index:1">
+      <div style="text-align:center;margin-bottom:26px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--a)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 14px"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h2 style="font-family:var(--fo);font-size:24px;font-weight:700;margin-bottom:7px">${t('subReq')}</h2>
+        <p style="color:var(--t2);font-size:13.5px;line-height:1.78">${t('subDesc')}</p>
+      </div>
+      <div style="margin-bottom:13px">
+        <label style="display:block;font-size:11px;color:var(--t3);font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px">${t('subCode')}</label>
+        <input class="inp" id="sub-inp" placeholder="SHAH-XXXX-YYYY" autocomplete="off" style="text-align:center;font-family:monospace;font-size:16px;letter-spacing:2.5px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')doVerifySub()"/>
+      </div>
+      <div id="sub-err" style="display:none;background:var(--r2);border:1px solid rgba(255,95,109,.28);border-radius:10px;padding:10px;color:var(--r);font-size:13px;text-align:center;margin-bottom:13px"></div>
+      <button class="btn bp" id="sub-btn" style="width:100%;padding:13px;font-size:15px" onclick="doVerifySub()">${t('activate')}</button>
+      <button class="btn bs" style="width:100%;margin-top:9px;padding:11px" onclick="go('home')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        ${t('back')}
+      </button>
+    </div>
+  </div>`;
+}
+async function doVerifySub() {
+  const code=$('sub-inp')?.value?.trim(); if(!code)return;
+  const btn=$('sub-btn'),err=$('sub-err');
+  btn.disabled=true; btn.textContent=t('verifying');
+  err.style.display='none';
+  const res=await DB.verifySub(code,ST.fp||'unknown',navigator.userAgent);
+  if(res.ok){localStorage.setItem('s365_sub',code);toast(t('subOk'),'success');go('home');}
+  else{err.textContent=res.msg;err.style.display='block';btn.disabled=false;btn.textContent=t('activate');}
+}
+
+// ══════════════════════════════════════════════════════
+//  MAINTENANCE & BANNED
+// ══════════════════════════════════════════════════════
+function renderMaintenance() {
+  const s=ST.settings;
+  const msg=ST.lang==='ar'?(s?.maintenance_msg_ar||s?.maintenance_msg||''):(s?.maintenance_msg||'');
+  $('app').innerHTML=`
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;position:relative">
+    <div style="position:relative;z-index:1;animation:slideUp .7s var(--ease) both">
+      <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--a)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 20px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <span class="badge br" style="margin-bottom:16px;padding:5px 16px;font-size:11px;letter-spacing:2px;text-transform:uppercase">Maintenance</span>
+      <h1 style="font-family:var(--fo);font-size:clamp(26px,6vw,50px);font-weight:700;letter-spacing:-1px;margin-bottom:13px">${t('maintenance')}</h1>
+      ${msg?`<p style="font-size:14.5px;color:var(--t2);max-width:380px;margin:0 auto;line-height:1.82">${esc(msg)}</p>`:''}
+    </div>
+  </div>`;
+}
+function renderBanned() {
+  $('app').innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px">
+    <div style="animation:slideUp .5s var(--ease) both">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--r)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 18px"><circle cx="12" cy="12" r="10"/><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"/></svg>
+      <h2 style="font-family:var(--fo);font-size:26px;font-weight:700;margin-bottom:10px">${t('ipBanned')}</h2>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', ()=>App.init());
+</script>
+</body>
+</html>
